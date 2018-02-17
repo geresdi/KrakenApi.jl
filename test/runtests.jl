@@ -1,4 +1,4 @@
 using KrakenAPI
 using Base.Test
 
-# TODO
+@test 1+1 == 2
