@@ -18,7 +18,7 @@ export private_closed_orders, private_query_orders, private_trades_history
 export private_query_trades, private_open_positions, private_ledgers
 export private_query_ledgers, private_trade_volume
 #Private functions to trade
-export buy_market, sell_market, buy_limit, sell_limit, cancel_order
+export buy_market, sell_market, buy_limit, sell_limit, order_arb, cancel_order
 
 global api_key
 global api_secret
@@ -718,7 +718,7 @@ return query(func, postdata, headerdata)
 
 end
 
-function order_arb(;pair::String="", order::String="", volume::Float64=0, ordertype::String="", args::Dict)
+function order_arb(;pair::String="", order::String="", volume::Float64=0, ordertype::String="", args::Dict=Dict())
 
 """ Advanced order, optional arguments are passed directly
 
