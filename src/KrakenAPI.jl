@@ -594,7 +594,7 @@ func = "/private/AddOrder"
 nonce = get_nonce()
 postdata = Dict("nonce" => nonce, "pair" => pair, "type" => "buy",
  "ordertype" => "market",
- "volume" => format(volume, precision = lot_decimals[pair]))
+ "volume" => format(volume, precision = Int(lot_decimals[pair])))
 #add optional parameters
 if userref != 0
     postdata["userref"] = string(userref)
@@ -629,7 +629,7 @@ func = "/private/AddOrder"
 nonce = get_nonce()
 postdata = Dict("nonce" => nonce, "pair" => pair, "type" => "sell",
  "ordertype" => "market",
- "volume" => format(volume, precision = lot_decimals[pair]))
+ "volume" => format(volume, precision = Int(lot_decimals[pair])))
 #add optional parameters
 if userref != 0
     postdata["userref"] = string(userref)
@@ -666,8 +666,8 @@ func = "/private/AddOrder"
 nonce = get_nonce()
 postdata = Dict("nonce" => nonce, "pair" => pair, "type" => "buy",
  "ordertype" => "limit",
- "volume" => format(volume, precision = lot_decimals[pair]),
- "price" => format(price, precision = price_decimals[pair]))
+ "volume" => format(volume, precision = Int(lot_decimals[pair])),
+ "price" => format(price, precision = Int(price_decimals[pair])))
 #add optional parameters
 if userref != 0
     postdata["userref"] = string(userref)
@@ -704,8 +704,8 @@ func = "/private/AddOrder"
 nonce = get_nonce()
 postdata = Dict("nonce" => nonce, "pair" => pair, "type" => "sell",
  "ordertype" => "limit",
- "volume" => format(volume, precision = lot_decimals[pair]),
- "price" => format(price, precision = price_decimals[pair]))
+ "volume" => format(volume, precision = Int(lot_decimals[pair])),
+ "price" => format(price, precision = Int(price_decimals[pair])))
 #add optional parameters
 if userref != 0
     postdata["userref"] = string(userref)
@@ -744,7 +744,7 @@ func = "/private/AddOrder"
 nonce = get_nonce()
 postdata = Dict("nonce" => nonce, "pair" => pair, "type" => order,
  "ordertype" => ordertype,
- "volume" => format(volume, precision = lot_decimals[pair]))
+ "volume" => format(volume, precision = Int(lot_decimals[pair])))
 #add optional parameters
 merge!(postdata,args)
 
