@@ -719,7 +719,6 @@ return query(func, postdata, headerdata)
 end
 
 function order_arb(;pair::String="", order::String="", volume::Float64=0, ordertype::String="", args::Dict=Dict())
-
 """ Advanced order, optional arguments are passed directly
 
         See https://www.kraken.com/en-us/help/api#private-user-trading
@@ -758,7 +757,7 @@ return query(func, postdata, headerdata)
 end
 
 function cancel_order(;txid::String="")
-""" Simple sell order at provided limit price
+""" Cancel order identified by the txid string
 
     See https://www.kraken.com/en-us/help/api#private-user-trading
     Note that API key and secret have to be imported before calling this function
