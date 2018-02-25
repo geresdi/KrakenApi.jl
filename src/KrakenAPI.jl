@@ -213,7 +213,7 @@ function ticker(pair::String)
     return query("/public/Ticker", Dict("pair" => pair))[pair]
 end
 
-function ohlc(pair::String; interval::Int64=1, since::Int64=-1)
+function ohlc(pair::String; interval::Int64=1, since::Int64=Int64(-1))
 """ Returns OHLC information for the given asset pair at the specified interval
 
     See https://www.kraken.com/en-us/help/api#get-ohlc-data
@@ -234,7 +234,7 @@ function ohlc(pair::String; interval::Int64=1, since::Int64=-1)
     return res[pair], res["last"]
 end
 
-function order_book(pair::String; count::Int64=-1)
+function order_book(pair::String; count::Int64=Int64(-1))
 """ Returns order book for the given asset pair
 
     See https://www.kraken.com/en-us/help/api#get-order-book
@@ -253,7 +253,7 @@ function order_book(pair::String; count::Int64=-1)
     return res[pair]["asks"], res[pair]["bids"]
 end
 
-function trades(pair::String; since::Int64=-1)
+function trades(pair::String; since::Int64=Int64(-1))
 """ Returns recent trades for the given asset pair
 
     See https://www.kraken.com/en-us/help/api#get-recent-trades
@@ -272,7 +272,7 @@ function trades(pair::String; since::Int64=-1)
      return res[pair], parse(res["last"])
 end
 
-function spread(pair::String; since::Int64=-1)
+function spread(pair::String; since::Int64=Int64(-1))
 """ Returns recent spread data for the given asset pair
 
     See https://www.kraken.com/en-us/help/api#get-recent-spread-data
@@ -364,7 +364,7 @@ function private_open_orders(;trades::Bool=false, userref::Int32=Int32(0))
 end
 
 function private_closed_orders(;trades::Bool=false, userref::Int32=Int32(0),
-    start_time::Int64=-1, end_time::Int64=-1)
+    start_time::Int64=Int64(-1), end_time::Int64=Int64(-1))
 """ Queries the closed orders of the user.
 
     See https://www.kraken.com/en-us/help/api#get-closed-orders
