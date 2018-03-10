@@ -73,7 +73,7 @@ function query(func::String, data::Dict = Dict(), header::Dict = Dict())
     try
         res = post(url, data = data, headers = header, timeout = query_timeout)
     catch e
-        rethrow(e)
+        error(string(e))
     end
 
     j = []
@@ -81,7 +81,7 @@ function query(func::String, data::Dict = Dict(), header::Dict = Dict())
     try
         j = json(res)
     catch e
-        rethrow(e)
+        error(string(e))
     end
 
     if j["error"] != []
@@ -138,7 +138,7 @@ function load_api_key(filen::String)
     try
         vals = readlines(filen)
     catch e
-        rethrow(e)
+        error(string(e))
     end
 
     if size(vals)[1] == 2
